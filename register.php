@@ -1,18 +1,18 @@
 <?php
 include "database.php";
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    if(empty($username) || empty($password)) {
+    if (empty($username) || empty($password)) {
         $error = "All fields are required";
     } else {
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
         $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
         $stmt->bind_param("ss", $username, $hashed_password);
 
-        if($stmt->execute()) {
+        if ($stmt->execute()) {
             $success = "Register successful <a href='login.php'>Log in</a>";
         } else {
             $error = "Error: " . $stmt->error;
@@ -30,8 +30,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Register</title>
     <style>
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: #ffe6f0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -40,67 +40,76 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .container {
-            background: #fff0f5;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
-            width: 350px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 360px;
+            text-align: center;
         }
 
         h3 {
-            text-align: center;
+            color: #e63946;
             margin-bottom: 20px;
-            color: #ff66b2;
         }
 
         input[type="text"],
         input[type="password"] {
-            width: 100%;
-            padding: 10px;
+            width: 90%;
+            padding: 12px;
             margin-top: 8px;
             margin-bottom: 15px;
-            border: 1px solid #ffb6c1;
+            border: 1px solid #ddd;
             border-radius: 8px;
-            background: #fffafc;
+            background: #f9f9f9;
+            font-size: 14px;
         }
 
         button {
             width: 100%;
-            padding: 10px;
-            background: #ff66b2;
-            color: #fff;
+            padding: 12px;
+            background: #e63946;
+            color: #ffffff;
             border: none;
-            border-radius: 20px;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
             transition: 0.3s;
         }
 
         button:hover {
-            background: #e64d99;
+            background: #d62839;
         }
 
         .message {
             margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 4px;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
         }
 
         .error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+
+        .success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #81c784;
         }
 
         p {
-            text-align: center;
-            margin-top: 10px;
-            color: #cc6699;
+            font-size: 14px;
+            color: #444;
+            margin-top: 15px;
         }
 
         a {
-            color: #ff66b2;
-            text-decoration: none;
+            color: #e63946;
             font-weight: bold;
+            text-decoration: none;
         }
 
         a:hover {
@@ -113,11 +122,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <h3>Register</h3>
 
-        <?php if(!empty($error)) : ?>
+        <?php if (!empty($error)) : ?>
             <div class="message error"><?php echo $error; ?></div>
         <?php endif; ?>
 
-        <?php if(!empty($success)) : ?>
+        <?php if (!empty($success)) : ?>
             <div class="message success"><?php echo $success; ?></div>
         <?php endif; ?>
 
@@ -131,7 +140,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Register</button>
 
             <p>Already have account? <a href="login.php">Login</a></p>
-            
+
 
         </form>
     </div>

@@ -1,6 +1,5 @@
 <?php
 include "database.php";
-session_start();
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
@@ -37,82 +36,86 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login</title>
     <style>
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: #ffe6f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
-        .container {
-            background: #fff0f5;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
-            width: 350px;
-        }
+.container {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 360px;
+    text-align: center;
+}
 
-        h3 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #ff66b2;
-        }
+h3 {
+    color: #e63946;
+    margin-bottom: 20px;
+}
 
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ffb6c1;
-            border-radius: 8px;
-            background: #fffafc;
-        }
+input[type="text"],
+input[type="password"] {
+    width: 90%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    font-size: 14px;
+}
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #ff66b2;
-            color: #fff;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+button {
+    width: 100%;
+    padding: 12px;
+    background: #e63946;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-        button:hover {
-            background: #e64d99;
-        }
+button:hover {
+    background: #d62839;
+}
 
-        .message {
-            margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 4px;
-        }
+.message {
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+}
 
-        .error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
+.error {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
 
-        p {
-            text-align: center;
-            margin-top: 10px;
-            color: #cc6699;
-        }
+p {
+    font-size: 14px;
+    color: #444;
+    margin-top: 15px;
+}
 
-        a {
-            color: #ff66b2;
-            text-decoration: none;
-            font-weight: bold;
-        }
+a {
+    color: #e63946;
+    font-weight: bold;
+    text-decoration: none;
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
+a:hover {
+    text-decoration: underline;
+}
+
     </style>
 </head>
 
